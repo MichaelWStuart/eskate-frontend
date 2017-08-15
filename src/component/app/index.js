@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import appStoreCreate from '../../lib/app-store-create';
-import AdminDashboard from '../admin-dashboard';
+import AdminDashboard from '../admin-component/admin-dashboard';
 import Storeview from '../frontend-component';
 
 const store = appStoreCreate();

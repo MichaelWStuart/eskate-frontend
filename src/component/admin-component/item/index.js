@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Order = () => (
+const Item = () => (
   <li>test item</li>
 );
 
-export default Order;
+export default Item;
