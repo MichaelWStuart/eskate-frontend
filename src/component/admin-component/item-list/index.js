@@ -1,7 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import Item from '../item';
 
-const ItemList = () => (
-  <h1>item list</h1>
+const ItemList = props => (
+  <ul>
+    {props.items.map(item => (
+      <Item
+        key={item._id}
+        item={item}
+      />
+    ))}
+  </ul>
 );
 
-export default ItemList;
+const mapStateToProps = state => ({ items: state.items });
+
+export default connect(mapStateToProps)(ItemList);
