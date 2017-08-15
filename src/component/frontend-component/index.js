@@ -1,10 +1,18 @@
 import React from 'react';
+import BoardItems from './main/board';
 
-export class MainView extends React.Component {
-  render(){
+class MainView extends React.Component {
+  render() {
     return (
-      <div>Oscar</div>
-    )
+      <div>
+        <header>
+          <div>Oscars Header</div>
+        </header>
+        <main>
+          <BoardItems />
+        </main>
+      </div>
+    );
   }
 }
 
