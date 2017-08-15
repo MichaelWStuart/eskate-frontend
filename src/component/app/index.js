@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import appStoreCreate from '../../lib/app-store-create';
 import AdminDashboard from '../admin-dashboard';
+import Storeview from '../frontend-component';
 
 const store = appStoreCreate();
 
@@ -12,6 +13,7 @@ const App = () => (
       <BrowserRouter>
         <main>
           <Route exact path="/admin" component={AdminDashboard} />
+          <Route exact path="/" component={Storeview} />
         </main>
       </BrowserRouter>
     </Provider>
