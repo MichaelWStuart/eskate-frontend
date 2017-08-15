@@ -20,3 +20,18 @@ export const filter = (list, ...args) =>
 
 export const reduce = (list, ...args) =>
   Array.prototype.reduce.apply(list, args);
+
+export const cookieFetch = (key) => {
+  const cookies = Object.assign(...document.cookie.split(';')
+    .map((cookie) => {
+      console.log(document.cookie)
+//eslint-disable-next-line
+      const [key, value] = cookie.split('=');
+      return { [key.trim()]: value };
+    }));
+  return cookies[key];
+};
+
+export const cookieDelete = (key) => {
+  document.cookie = `${key}=; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+};

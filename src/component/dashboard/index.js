@@ -3,14 +3,26 @@ import { connect } from 'react-redux';
 import LoginForm from '../login-form';
 import * as userActions from '../../action/user-actions';
 
-const Dashboard = props => (
-  <div className="dashboard">
-    <h2> Login Page </h2>
-    <LoginForm
-      onComplete={props.userLogin}
-    />
-  </div>
-);
+class Dashboard extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentWillMount() {
+
+  }
+
+  render() {
+    return (
+      <div className="dashboard">
+        <h2> Login Page </h2>
+        <LoginForm
+          onComplete={this.props.userLogin}
+        />
+      </div>
+    );
+  }
+}
 
 const mapStateToProps = state => ({ user: state.user });
 const mapDispatchToProps = dispatch => ({
