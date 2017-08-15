@@ -1,7 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import Order from '../order';
 
-const OrderList = () => (
-  <h1>order list</h1>
+const OrderList = props => (
+  <ul>
+    {props.orders.map(order => (
+      <Order
+        key={order._id}
+        order={order}
+      />
+    ))}
+  </ul>
 );
 
-export default OrderList;
+const mapStateToProps = state => ({ orders: state.orders });
+
+export default connect(mapStateToProps)(OrderList);

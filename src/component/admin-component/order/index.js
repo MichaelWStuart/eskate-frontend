@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Order = () => (
-  <li>test item</li>
+  <li>test order</li>
 );
 
 export default Order;
