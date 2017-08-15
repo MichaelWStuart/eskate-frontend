@@ -1,10 +1,11 @@
 import React from 'react';
+import Header from './header';
 
 export class MainView extends React.Component {
   render(){
     return (
-      <div>Oscar</div>
-    )
+      <Header />
+    );
   }
 }
 
