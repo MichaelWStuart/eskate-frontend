@@ -26,7 +26,7 @@ class MainView extends React.Component {
 let mapStateToProps = (state) => ({});
 
 let mapDispatchToProps = (dispatch) => ({
-  fetchItems: () => dispatch(itemAction.fetchItemsRequest()),
+  fetchItems: () => dispatch(itemAction.itemsFetchRequest()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainView);
