@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as util from '../../../../lib/util.js';
+import './_board.scss';
 
 class BoardItems extends React.Component {
   constructor(props) {
@@ -13,18 +14,16 @@ class BoardItems extends React.Component {
   render() {
     console.log('board props: ', this.props);
     return (
-      <div className='board-items'>
-        BOARD ITEMS
+      <div className='board-items-container'>
+        <h4>BOARD ITEMS</h4>
         {this.props.items.map(item => {
-          <div>
-            {util.renderIf(item.type === 'board',
-              <div key={item._id}>
-                <img src={item.photoURI} height='100' width='100' />
-                <h3>{item.name}</h3>
-                <h3>{item._id}</h3>
-              </div>
-            )}
-        </div>
+          return item.type === 'board' ?
+            <div className='board-item' key={item._id}>
+              <img src={item.photoURI} height='100px' width='100px' />
+              <h3>{item.name}</h3>
+            </div>
+            :
+            undefined;
         })}
       </div>
     );

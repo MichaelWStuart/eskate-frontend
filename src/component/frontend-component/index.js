@@ -1,6 +1,7 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import BoardItems from './main/board';
+import PartItems from './main/part';
 import * as itemAction from '../../action/item-actions';
 import Header from './header';
 
@@ -16,6 +17,7 @@ class MainView extends React.Component {
         <Header />
         <main>
           <BoardItems />
+          <PartItems />
         </main>
       </div>
     );
