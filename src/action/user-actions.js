@@ -14,15 +14,15 @@ export const userLogout = () => ({
 export const userLoginRequest = user => dispatch =>
   //eslint-disable-next-line
   superagent.get(`${__API_URL__}/login`)
+    .withCredentials()
     .auth(user.username, user.password)
     .then((res) => {
       const token = cookieFetch('Admin-Token');
-      console.log('cookie', token)
       if (token) dispatch(userLogin(token));
       return res;
     });
 
-export const userLogoutRequest = (dispatch) => {
+export const userLogoutRequest = () => (dispatch) => {
   cookieDelete('Admin-Token');
   dispatch(userLogout());
 };

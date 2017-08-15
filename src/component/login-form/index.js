@@ -1,5 +1,4 @@
 import React from 'react';
-import * as util from '../../lib/util';
 
 class UserForm extends React.Component {
   constructor(props) {
@@ -12,14 +11,7 @@ class UserForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const { onComplete } = this.props;
-    const result = onComplete(this.state);
-    if (result instanceof Promise) {
-      result.then(() => this.setState({ error: null }))
-        .catch((error) => {
-          util.log('ListForm Error:', error);
-          this.setState({ error });
-        });
-    }
+    onComplete(this.state);
   }
 
   handleChange(e) {

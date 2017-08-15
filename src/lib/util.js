@@ -24,7 +24,6 @@ export const reduce = (list, ...args) =>
 export const cookieFetch = (key) => {
   const cookies = Object.assign(...document.cookie.split(';')
     .map((cookie) => {
-      console.log(document.cookie)
 //eslint-disable-next-line
       const [key, value] = cookie.split('=');
       return { [key.trim()]: value };
