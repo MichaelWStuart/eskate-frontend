@@ -13,7 +13,7 @@ export const userLogout = () => ({
 
 export const userLoginRequest = user => dispatch =>
   //eslint-disable-next-line
-  superagent.get(`${__API_URL__}/login`)
+  superagent.get(`${__API_URL__}/admin/login`)
     .withCredentials()
     .auth(user.username, user.password)
     .then((res) => {

@@ -4,7 +4,7 @@ import LoginForm from '../login-form';
 import * as userActions from '../../action/user-actions';
 import { cookieFetch } from '../../lib/util';
 
-class Dashboard extends React.Component {
+class AdminDashboard extends React.Component {
   componentWillMount() {
     const token = cookieFetch('Admin-Token');
     token && this.props.restoreLogin(token);
@@ -36,4 +36,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Dashboard);
+)(AdminDashboard);

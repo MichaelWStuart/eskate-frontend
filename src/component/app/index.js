@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import appStoreCreate from '../../lib/app-store-create';
-import Dashboard from '../dashboard';
+import AdminDashboard from '../admin-dashboard';
 
 const store = appStoreCreate();
 
@@ -11,7 +11,7 @@ const App = () => (
     <Provider store={store}>
       <BrowserRouter>
         <main>
-          <Route exact path="/" component={Dashboard} />
+          <Route exact path="/admin" component={AdminDashboard} />
         </main>
       </BrowserRouter>
     </Provider>
