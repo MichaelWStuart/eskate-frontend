@@ -6,24 +6,15 @@ export const userLogin = user => ({
 });
 
 export const userSignup = user => ({
-  type: 'USER_SIGNUP',
+  type: 'USER_LOGOUT',
   payload: user,
 });
-
-export const userSignupRequest = user => dispatch =>
-  //eslint-disable-next-line
-  superagent.post(`${__API_URL__}/signup`)
-    .send(user)
-    .then((res) => {
-      dispatch(userSignup(res.body));
-      return res;
-    });
 
 export const userLoginRequest = user => dispatch =>
   //eslint-disable-next-line
   superagent.get(`${__API_URL__}/login`)
-    .send({ username: user.username, password: user.password })
+    .auth(user.username, user.password)
     .then((res) => {
-      dispatch(userLogin(res.body));
+      dispatch(userLogin({ token: res.text }));
       return res;
     });

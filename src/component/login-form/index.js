@@ -4,6 +4,7 @@ import * as util from '../../lib/util';
 class UserForm extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { username: '', password: '' };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
@@ -39,7 +40,7 @@ class UserForm extends React.Component {
         />
         <input
           name="password"
-          type="text"
+          type="password"
           placeholder="password"
           value={this.state.password}
           onChange={this.handleChange}
