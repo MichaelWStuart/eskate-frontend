@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import * as util from '../../../../lib/util.js';
 
 class BoardItems extends React.Component {
   constructor(props) {
@@ -15,10 +16,15 @@ class BoardItems extends React.Component {
       <div className='board-items'>
         BOARD ITEMS
         {this.props.items.map(item => {
-          return <div key={item._id}>
-            <img src={item.photoURI} height='100' width='100' />
-            <h3>{item.name}</h3>
-          </div>
+          <div>
+            {util.renderIf(item.type === 'board',
+              <div key={item._id}>
+                <img src={item.photoURI} height='100' width='100' />
+                <h3>{item.name}</h3>
+                <h3>{item._id}</h3>
+              </div>
+            )}
+        </div>
         })}
       </div>
     );
