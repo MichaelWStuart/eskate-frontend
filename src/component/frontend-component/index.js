@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import BoardItems from './main/board';
-import * as itemAction from '../../action/item-actions.js';
+import * as itemAction from '../../action/item-actions';
+import Header from './header';
 
 class MainView extends React.Component {
 
@@ -12,9 +13,7 @@ class MainView extends React.Component {
   render() {
     return (
       <div>
-        <header>
-          <div>Oscars Header</div>
-        </header>
+        <Header />
         <main>
           <BoardItems />
         </main>
