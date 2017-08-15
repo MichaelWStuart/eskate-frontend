@@ -6,17 +6,12 @@ const validateUser = (payload) => {
 export default (state = [], action) => {
   const { type, payload } = action;
   switch (type) {
-    case 'USER_SET':
+    case 'USER_SIGNUP':
+      validateUser(payload);
       return payload;
-    case 'USER_CREATE':
+    case 'USER_LOGIN':
       validateUser(payload);
-      return [payload, ...state];
-    case 'USER_UPDATE':
-      validateUser(payload);
-      return state.map(item => item._id === payload._id ? payload : item);
-    case 'USER_DELETE':
-      validateUser(payload);
-      return state.filter(item => item._id !== payload._id);
+      return payload;
     default:
       return state;
   }
