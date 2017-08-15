@@ -4,13 +4,8 @@ import * as util from '../../lib/util';
 class UserForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = props.user ? props.user : { name: '' };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-  }
-
-  componentWillReceiveProps(props) {
-    if (props.user) this.setState(props.user);
   }
 
   handleSubmit(e) {
@@ -27,26 +22,29 @@ class UserForm extends React.Component {
   }
 
   handleChange(e) {
-    this.setState({ name: e.target.value });
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   render() {
     return (
       <form
         onSubmit={this.handleSubmit}
-        className={util.classToggler({
-          'user-form': true,
-          error: this.state.error,
-        })}
       >
         <input
-          name="name"
+          name="username"
           type="text"
-          placeholder="name"
-          value={this.state.name}
+          placeholder="username"
+          value={this.state.username}
           onChange={this.handleChange}
         />
-        <button type="submit">{this.props.buttonText}</button>
+        <input
+          name="password"
+          type="text"
+          placeholder="password"
+          value={this.state.password}
+          onChange={this.handleChange}
+        />
+        <button type="submit">Login</button>
       </form>
     );
   }

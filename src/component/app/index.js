@@ -11,7 +11,6 @@ const App = () => (
     <Provider store={store}>
       <BrowserRouter>
         <main>
-          <h1> Users </h1>
           <Route exact path="/" component={Dashboard} />
         </main>
       </BrowserRouter>
