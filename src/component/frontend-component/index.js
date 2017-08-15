@@ -1,12 +1,31 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import BoardItems from './main/board';
+import * as itemAction from '../../action/item-actions';
 import Header from './header';
 
-export class MainView extends React.Component {
-  render(){
+class MainView extends React.Component {
+
+  componentWillMount() {
+    this.props.fetchItems();
+  }
+
+  render() {
     return (
-      <Header />
+      <div>
+        <Header />
+        <main>
+          <BoardItems />
+        </main>
+      </div>
     );
   }
 }
 
-export default MainView;
+let mapStateToProps = (state) => ({});
+
+let mapDispatchToProps = (dispatch) => ({
+  fetchItems: () => dispatch(itemAction.itemsFetchRequest()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainView);
