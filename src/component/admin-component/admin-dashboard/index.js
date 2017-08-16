@@ -5,6 +5,7 @@ import AdminHead from '../admin-head';
 import OrderList from '../order-list';
 import ItemList from '../item-list';
 import * as userActions from '../../../action/user-actions';
+import * as itemActions from '../../../action/item-actions';
 import { cookieFetch } from '../../../lib/util';
 
 class AdminDashboard extends React.Component {
@@ -15,6 +16,7 @@ class AdminDashboard extends React.Component {
   }
 
   componentWillMount() {
+    this.props.fetchItems();
     const token = cookieFetch('Admin-Token');
     token && this.props.restoreLogin(token);
   }
@@ -51,6 +53,7 @@ const mapDispatchToProps = dispatch => ({
   restoreLogin: user => dispatch(userActions.userLogin(user)),
   userLogin: user => dispatch(userActions.userLoginRequest(user)),
   userLogout: () => dispatch(userActions.userLogoutRequest()),
+  fetchItems: () => dispatch(itemActions.itemsFetchRequest()),
 });
 
 export default connect(
