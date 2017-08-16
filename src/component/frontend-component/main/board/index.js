@@ -20,7 +20,7 @@ class BoardItems extends React.Component {
           return item.type === 'board' ?
             <div className='board-item' key={item._id}>
               <img src={item.photoURI} height='100px' width='100px' />
-              <h3>{item.name}</h3>
+              <h6>{item.name}</h6>
             </div>
             :
             undefined;
