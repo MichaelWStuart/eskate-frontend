@@ -1,3 +1,5 @@
+@import '../../../../style/_base.scss';
+
 /* The Modal (background) */
 .cart-modal-background {
     // display: none; /* Hidden by default */
@@ -13,7 +15,7 @@
 
 .cart-modal-content {
   position: relative;
-  background-color: #fefefe;
+  background-color: rgba($color-lightgrey, .9);
   margin-left: calc(100%/2);
   padding: 0;
   border: 1px solid #888;
@@ -35,6 +37,9 @@
   .cart-modal-items{
     width: 100%;
     height: auto;
+    background-color: rgba($color-lightgrey, .7);
+    margin-top: .25em;
+
 
     img, h6, button {
       width: calc(100%/4);

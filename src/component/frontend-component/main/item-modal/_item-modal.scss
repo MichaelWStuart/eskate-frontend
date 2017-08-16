@@ -1,3 +1,5 @@
+@import '../../../../style/_base.scss';
+
 /* The Modal (background) */
 .item-modal-background {
     // display: none; /* Hidden by default */
@@ -18,7 +20,7 @@
 
 .item-modal-content {
   position: relative;
-  background-color: #fefefe;
+  background-color: $color-grey;
   margin: auto;
   padding: 0;
   border: 1px solid #888;
