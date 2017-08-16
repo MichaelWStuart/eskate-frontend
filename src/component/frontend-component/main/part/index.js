@@ -23,7 +23,7 @@ class PartItems extends React.Component {
   }
 
   render() {
-    console.log('item props: ', this.props);
+    console.log('@@@@@ ', this.props);
     return (
       <div className='part-items-container'>
         <div className='clear-float'></div>

@@ -11,22 +11,32 @@ class Header extends React.Component {
     super(props);
     this.state = {
       itemName:'',
-      itemCount: 3,
+      itemCount: '',
       itemTotal: 100.00,
       showCart: false,
     };
-    this.handleCartModal = this.handleCartModal.bind(this);
+    // this.handleCartModal = this.handleCartModal.bind(this);
   }
+
   componentWillMount() {
     this.props.storeSettingsFetch();
   }
 
-  handleCartModal(){
-    this.state.showCart ?
-      this.setState({showCart: false})
-      :
-      this.setState({showCart: true});
+  componentWillReceiveProps(props){
+    let sumTotal = props.cart.reduce((prev, curr) => prev += curr.price, 0);
+    console.log('props.cart: ', props.cart);
+    this.setState({
+      itemCount: props.cart.length,
+      itemTotal: sumTotal,
+    });
   }
+
+  // handleCartModal(){
+  //   this.state.showCart ?
+  //     this.setState({showCart: false})
+  //     :
+  //     this.setState({showCart: true});
+  // }
 
   render() {
     let {itemName, itemCount, itemTotal} = this.state;
@@ -37,8 +47,7 @@ class Header extends React.Component {
           src={this.props.header.storeLogoURI}
         />
         <div className='cart-button'>
-          <button type='button'
-            onClick={this.handleCartModal}>
+          <button type='button'>
             <i className="fa fa-shopping-cart"></i> <span id="cart-total">
               {itemCount} item(s) - $ {itemTotal}</span></button>
         </div>
@@ -72,6 +81,7 @@ class Header extends React.Component {
 
 let mapStateToProps = (state) => ({
   header: state.store,
+  cart: state.cart,
 });
 
 let mapDispatchToProps = (dispatch) => ({
