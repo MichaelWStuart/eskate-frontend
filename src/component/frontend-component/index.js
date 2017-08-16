@@ -5,6 +5,7 @@ import PartItems from './main/part';
 import Hero from './main/hero';
 import * as itemAction from '../../action/item-actions';
 import Header from './header';
+import Footer from './footer';
 
 class MainView extends React.Component {
 
@@ -21,6 +22,7 @@ class MainView extends React.Component {
           <BoardItems />
           <PartItems />
         </main>
+        <Footer />
       </div>
     );
   }

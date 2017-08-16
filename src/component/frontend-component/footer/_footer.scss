@@ -1,0 +1,49 @@
+@import "../../../style/_main.scss";
+
+.footer-main {
+}
+.footer-container {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.footer-column {
+  position: relative;
+  width: 33%;
+  float: left;
+}
+h3 {
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.footer-social {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.footer-social-icon {
+  // order: 1px solid black;
+  display: inline-block;
+  list-style: none;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 10%;
+}
+.google-maps {
+  width: 200px;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.footer-address {
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.footer-address-info {
+  margin-left: 10px;
+  display: inline-block;
+  margin-bottom: 10px;
+  width: auto;
+}
