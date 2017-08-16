@@ -1,10 +1,11 @@
 import React from 'react';
+import './_hero.scss';
 
 class Hero extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      photoURI: 'http://cdn1.bigcommerce.com/n-yp39j5/zad02/product_images/theme_images/2017-new-theme-raptor-2.jpg?t=1496024372',
+      photoURI: '../../../../assets/2017-new-theme-raptor-2.jpg',
     };
   }
 

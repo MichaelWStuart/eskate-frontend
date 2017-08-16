@@ -11,10 +11,10 @@ class PartItems extends React.Component {
       item: '',
       showModal: false,
     };
-    this.handleModal = this.handleModal.bind(this);
+    this.handleItemModal = this.handleItemModal.bind(this);
   }
 
-  handleModal(item){
+  handleItemModal(item){
     console.log('item: ', item);
     this.state.showModal ?
       this.setState({item: '', showModal: false})
@@ -34,7 +34,7 @@ class PartItems extends React.Component {
               <img src={item.photoURI} />
               <h6>{item.name}</h6>
               <button
-                onClick={() => this.handleModal(item)}>
+                onClick={() => this.handleItemModal(item)}>
                 View Item
               </button>
             </div>
@@ -44,7 +44,7 @@ class PartItems extends React.Component {
         {util.renderIf(this.state.showModal,
           <ItemModal
             item={this.state.item}
-            onComplete={this.handleModal}
+            onComplete={this.handleItemModal}
           />
         )}
       </div>
