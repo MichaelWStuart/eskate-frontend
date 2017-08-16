@@ -8,35 +8,41 @@ class CartModal extends React.Component {
     this.state = {
       cart: [{_id: 12, photoURI: '../../../../assets/landwheel4.jpg', name: 'landwheel', price: 400}, {_id: 34, photoURI: '../../../../assets/battery.jpg', name: 'battery', price: 50}],
     };
-    this.handleCart = this.handleCart.bind(this);
+    this.handleCartItemDelete = this.handleCartItemDelete.bind(this);
   }
 
-  handleCart(){
+  handleCartItemDelete(item){
 
   }
 
   render(){
     let total = this.state.cart.reduce((acc, cur) => {
-      return acc.price + cur.price;
+      return acc += cur.price, 0;
     });
     console.log('total: ', total);
     console.log('cart state: ', this.state.cart[0].photoURI);
     return(
-      <div className='cart-modal-container'>
+      <div className='cart-modal-background' onClick={this.props.onComplete}>
         <div className='cart-modal-content'>
           {this.state.cart.map(item => {
             return <div className='cart-modal-items' key={item._id}>
               <img src={item.photoURI} />
               <h6>{item.name}</h6>
-              <h6>{item.price}</h6>
-              <button className='close' onClick={this.props.onComplete}>X</button>
+              <h6>${item.price}</h6>
+              <button className='close' onClick={this.handleCartItemDelete}>X</button>
             </div>;
           })}
-          <div className='cart-total'>
-            Total
-            <span className='cart-amount'>${total}</span>
+          <div className='cart-modal-footer'>
+            <div className='cart-total-container'>
+              <div className='cart-total-text'>
+                Total
+              </div>
+              <div className='cart-total-amount'>
+                ${total}
+              </div>
+            </div>
+            <button className='cart-checkout'>Checkout</button>
           </div>
-          <button className='cart-checkout'>Checkout</button>
         </div>
       </div>
     );

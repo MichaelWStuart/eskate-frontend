@@ -22,7 +22,10 @@ class Header extends React.Component {
   }
 
   handleCartModal(){
-    this.setState({showCart: true});
+    this.state.showCart ?
+      this.setState({showCart: false})
+      :
+      this.setState({showCart: true});
   }
 
   render() {
@@ -41,6 +44,7 @@ class Header extends React.Component {
         </div>
         {util.renderIf(this.state.showCart,
           <CartModal
+            onComplete={this.handleCartModal}
           />
         )}
         <div className='navigation'>
