@@ -8,39 +8,51 @@ class BoardItems extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      item: '',
       showModal: false,
     };
-    this.handleModalState = this.handleModalState.bind(this);
+    this.handleModal = this.handleModal.bind(this);
   }
 
-  handleModalState(){
-    this.setState({showModal: false});
+  handleModal(item){
+    console.log('item: ', item);
+    this.state.showModal ?
+      this.setState({
+        item: '',
+        showModal: false,
+      })
+      :
+      this.setState({
+        item: item,
+        showModal: true,
+      });
   }
 
   render() {
     console.log('board props: ', this.props);
+    console.log('board state: ', this.state);
     return (
       <div className='board-items-container'>
         <h4>BOARD ITEMS</h4>
         {this.props.items.map(item => {
           return item.type === 'board' ?
             <div className='board-item' key={item._id}>
-              <img src={item.photoURI} height='100px' width='100px' />
+              <img src={item.photoURI} />
               <h6>{item.name}</h6>
               <button
-                onClick={() => this.setState({showModal: true})}>
+                onClick={() => this.handleModal(item)}>
                 View Item
               </button>
-              {util.renderIf(this.state.showModal,
-                <ItemModal
-                  item={item}
-                  onComplete={this.handleModalState}
-                />
-              )}
             </div>
             :
             undefined;
         })}
+        {util.renderIf(this.state.showModal,
+          <ItemModal
+            item={this.state.item}
+            onComplete={this.handleModal}
+          />
+        )}
       </div>
     );
   }
