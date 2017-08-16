@@ -2,13 +2,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as util from '../../../../lib/util.js';
 import './_board.scss';
+import ItemModal from '../item-modal';
 
 class BoardItems extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      showModal: false,
     };
+    this.handleModalState = this.handleModalState.bind(this);
+  }
+
+  handleModalState(){
+    this.setState({showModal: false});
   }
 
   render() {
@@ -21,6 +27,16 @@ class BoardItems extends React.Component {
             <div className='board-item' key={item._id}>
               <img src={item.photoURI} height='100px' width='100px' />
               <h6>{item.name}</h6>
+              <button
+                onClick={() => this.setState({showModal: true})}>
+                View Item
+              </button>
+              {util.renderIf(this.state.showModal,
+                <ItemModal
+                  item={item}
+                  onComplete={this.handleModalState}
+                />
+              )}
             </div>
             :
             undefined;

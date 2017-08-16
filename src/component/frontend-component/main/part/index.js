@@ -30,7 +30,7 @@ class PartItems extends React.Component {
               <h6>{item.name}</h6>
               <button
                 onClick={() => this.setState({showModal: true})}>
-                Show Item
+                View Item
               </button>
               {util.renderIf(this.state.showModal,
                 <ItemModal
