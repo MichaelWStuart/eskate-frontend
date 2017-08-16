@@ -11,18 +11,18 @@ class ItemModal extends React.Component {
   render() {
     let item = this.props.item;
     return (
-      <div className='item-modal-background'>
+      <div className='item-modal-background' onClick={this.props.onComplete}>
         <div className='item-modal-content'>
-          <div className='upper-section'>
+          <div className='modal-header'>
             <img src={item.photoURI} />
-            <div className='upper-right-section'>
+            <div className='modal-header-right'>
               <button className='close' onClick={this.props.onComplete}>X</button>
               <h4>{item.name}</h4>
               <h4>${item.price}</h4>
               <button className='add-to-cart'>Add to Cart</button>
             </div>
           </div>
-          <div className='lower-section'>
+          <div className='modal-body'>
             <p>{item.description}</p>
             {util.renderIf(item.type === 'board',
               <div className='board-features'>

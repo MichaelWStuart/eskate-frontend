@@ -1,7 +1,7 @@
+import './_board.scss';
 import React from 'react';
 import { connect } from 'react-redux';
-import * as util from '../../../../lib/util.js';
-import './_board.scss';
+import * as util from '../../../../lib/util';
 import ItemModal from '../item-modal';
 
 class BoardItems extends React.Component {
@@ -22,7 +22,7 @@ class BoardItems extends React.Component {
       :
       this.setState({item: item, showModal: true});
   }
-  
+
   render() {
     console.log('board props: ', this.props);
     console.log('board state: ', this.state);

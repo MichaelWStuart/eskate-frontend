@@ -1,8 +1,8 @@
+import './_part.scss';
 import React from 'react';
 import { connect } from 'react-redux';
-import './_part.scss';
-import ItemModal from '../item-modal';
 import * as util from '../../../../lib/util';
+import ItemModal from '../item-modal';
 
 class PartItems extends React.Component {
   constructor(props) {
