@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as storeActions from '../../../action/store-actions';
-import * as util from '../../../../lib/util';
+import * as util from '../../../lib/util';
 import './_header.scss';
-import CartModal from './main/cart';
+import CartModal from '../main/cart';
 
 
 class Header extends React.Component {
@@ -34,8 +34,8 @@ class Header extends React.Component {
           src={this.props.header.storeLogoURI}
         />
         <div className='cart-button'>
-          <button type="button"
-            onClick={() => this.props.onComplete(this.state.items)}>
+          <button type='button'
+            onClick={() => this.props.onComplete()}>
             <i className="fa fa-shopping-cart"></i> <span id="cart-total">
               {itemCount} item(s) - $ {itemTotal}</span></button>
         </div>

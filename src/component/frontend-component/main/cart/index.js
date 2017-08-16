@@ -1,22 +1,26 @@
 import React from 'react';
 import './_cart.scss';
 
-class Cart extends React.Component {
+class CartModal extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      item: '',
-      showCart: false,
+      items: '',
     };
+    this.handleCart = this.handleCart.bind(this);
+  }
+
+  handleCart(){
+
   }
 
   render(){
     return(
-      <div className='cart-background'>
-      CART
+      <div className='cart-background' items={this.state.items}>
+        <h3>CART</h3>
       </div>
     );
   }
 }
 
-export default Cart;
+export default CartModal;
