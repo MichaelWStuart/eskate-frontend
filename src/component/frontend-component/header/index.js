@@ -10,26 +10,32 @@ class Header extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      items: [{name: 'mtn board', type: 'board'}, {name: 'wheel', type: 'part'}],
       itemName:'',
       itemCount: '',
       itemTotal: 100.00,
       showCart: false,
     };
+    this.handleCartModal = this.handleCartModal.bind(this);
   }
+
   componentWillMount() {
     this.props.storeSettingsFetch();
   }
+
   componentWillReceiveProps(props){
-    let sumTotal = props.cart.reduce((prev, curr) => prev += curr.price, 0)
-    console.log('!!!!!', sumTotal);
+    let sumTotal = props.cart.reduce((prev, curr) => prev += curr.price, 0);
+    console.log('props.cart: ', props.cart);
     this.setState({
       itemCount: props.cart.length,
       itemTotal: sumTotal,
-    })
+    });
   }
+
   handleCartModal(){
-    this.setState({showCart: true});
+    this.state.showCart ?
+      this.setState({showCart: false})
+      :
+      this.setState({showCart: true});
   }
 
   render() {
@@ -42,14 +48,13 @@ class Header extends React.Component {
         />
         <div className='cart-button'>
           <button type='button'
-            onClick={() => this.props.onComplete()}>
+            onClick={this.handleCartModal}>
             <i className="fa fa-shopping-cart"></i> <span id="cart-total">
               {itemCount} item(s) - $ {itemTotal}</span></button>
         </div>
         {util.renderIf(this.state.showCart,
           <CartModal
             onComplete={this.handleCartModal}
-            items={this.props.items}
           />
         )}
         <div className='navigation'>
@@ -78,10 +83,10 @@ class Header extends React.Component {
 let mapStateToProps = (state) => ({
   header: state.store,
   cart: state.cart,
-})
+});
 
 let mapDispatchToProps = (dispatch) => ({
   storeSettingsFetch: () => dispatch(storeActions.storeSettingsFetchRequest()),
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

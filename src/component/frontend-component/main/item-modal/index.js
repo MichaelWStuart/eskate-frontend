@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as util from '../../../../lib/util';
-import * as cart from '../../../../action/cart-actions.js';
 import './_item-modal.scss';
+import * as cart from '../../../../action/cart-actions.js';
 
 class ItemModal extends React.Component {
   constructor(props) {
@@ -10,7 +10,6 @@ class ItemModal extends React.Component {
   }
 
   handleAddToCart(item){
-    console.log('^^^',item );
     this.props.addToCart(item);
   }
 
@@ -25,7 +24,10 @@ class ItemModal extends React.Component {
               <button className='close' onClick={this.props.onComplete}>X</button>
               <h4>{item.name}</h4>
               <h4>${item.price}</h4>
-              <button className='add-to-cart' onClick={()=> this.handleAddToCart(item)}>Add to Cart</button>
+              <button className='add-to-cart'
+                onClick={()=> this.handleAddToCart(item)}>
+                Add to Cart
+              </button>
             </div>
           </div>
           <div className='modal-body'>
