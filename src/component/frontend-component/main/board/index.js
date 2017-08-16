@@ -14,20 +14,15 @@ class BoardItems extends React.Component {
     this.handleModal = this.handleModal.bind(this);
   }
 
+
   handleModal(item){
     console.log('item: ', item);
     this.state.showModal ?
-      this.setState({
-        item: '',
-        showModal: false,
-      })
+      this.setState({item: '', showModal: false})
       :
-      this.setState({
-        item: item,
-        showModal: true,
-      });
+      this.setState({item: item, showModal: true});
   }
-
+  
   render() {
     console.log('board props: ', this.props);
     console.log('board state: ', this.state);

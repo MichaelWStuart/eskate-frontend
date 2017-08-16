@@ -8,13 +8,18 @@ class PartItems extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      item: '',
       showModal: false,
     };
-    this.handleModalState = this.handleModalState.bind(this);
+    this.handleModal = this.handleModal.bind(this);
   }
 
-  handleModalState(){
-    this.setState({showModal: false});
+  handleModal(item){
+    console.log('item: ', item);
+    this.state.showModal ?
+      this.setState({item: '', showModal: false})
+      :
+      this.setState({item: item, showModal: true});
   }
 
   render() {
@@ -26,22 +31,22 @@ class PartItems extends React.Component {
         {this.props.items.map(item => {
           return item.type === 'part' ?
             <div className='part-item' key={item._id}>
-              <img src={item.photoURI} height='100' width='100' />
+              <img src={item.photoURI} />
               <h6>{item.name}</h6>
               <button
-                onClick={() => this.setState({showModal: true})}>
+                onClick={() => this.handleModal(item)}>
                 View Item
               </button>
-              {util.renderIf(this.state.showModal,
-                <ItemModal
-                  item={item}
-                  onComplete={this.handleModalState}
-                />
-              )}
             </div>
             :
             undefined;
         })}
+        {util.renderIf(this.state.showModal,
+          <ItemModal
+            item={this.state.item}
+            onComplete={this.handleModal}
+          />
+        )}
       </div>
     );
   }

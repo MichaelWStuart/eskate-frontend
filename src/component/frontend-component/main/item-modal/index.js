@@ -11,36 +11,38 @@ class ItemModal extends React.Component {
   render() {
     let item = this.props.item;
     return (
-      <div className='item-modal'>
-        <div className='upper-section'>
-          <img src={item.photoURI} />
-          <div className='upper-right-section'>
-            <button onClick={this.props.onComplete}>X</button>
-            <h4>{item.name}</h4>
-            <h4>${item.price}</h4>
+      <div className='item-modal-background'>
+        <div className='item-modal-content'>
+          <div className='upper-section'>
+            <img src={item.photoURI} />
+            <div className='upper-right-section'>
+              <button className='close' onClick={this.props.onComplete}>X</button>
+              <h4>{item.name}</h4>
+              <h4>${item.price}</h4>
+            </div>
           </div>
-        </div>
-        <button>Add to Cart</button>
-        <div className='lower-section'>
-          <p>{item.description}</p>
-          {util.renderIf(item.type === 'board',
-            <div className='board-features'>
-              <li>Max Spead: {item.maxSpeed}</li>
-              <li>Max Capacity: {item.maxLoadCapacity}</li>
-              <li>Charging Time: {item.chargingTime}</li>
-              <li>Transmission: {item.transmission}</li>
-              <li>Dimensions (cm): {item.length} x {item.width} x {item.height} </li>
-            </div>
-          )}
-          {util.renderIf(item.type === 'part',
-            <div className='part-features'>
-              <li>{item.maxSpeed}</li>
-              <li>{item.maxLoadCapacity}</li>
-              <li>{item.chargingTime}</li>
-              <li>{item.transmission}</li>
-              <li>{item.length} x {item.width} x {item.height}</li>
-            </div>
-          )}
+          <button>Add to Cart</button>
+          <div className='lower-section'>
+            <p>{item.description}</p>
+            {util.renderIf(item.type === 'board',
+              <div className='board-features'>
+                <li>Max Spead: {item.maxSpeed}</li>
+                <li>Max Capacity: {item.maxLoadCapacity}</li>
+                <li>Charging Time: {item.chargingTime}</li>
+                <li>Transmission: {item.transmission}</li>
+                <li>Dimensions (cm): {item.length} x {item.width} x {item.height} </li>
+              </div>
+            )}
+            {util.renderIf(item.type === 'part',
+              <div className='part-features'>
+                <li>{item.maxSpeed}</li>
+                <li>{item.maxLoadCapacity}</li>
+                <li>{item.chargingTime}</li>
+                <li>{item.transmission}</li>
+                <li>{item.length} x {item.width} x {item.height}</li>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     );
