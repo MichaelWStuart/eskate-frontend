@@ -10,6 +10,7 @@ class ItemModal extends React.Component {
   }
 
   handleAddToCart(item){
+    console.log('^^^',item );
     this.props.addToCart(item);
   }
 
