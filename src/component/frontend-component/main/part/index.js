@@ -1,29 +1,52 @@
+import './_part.scss';
 import React from 'react';
 import { connect } from 'react-redux';
+import * as util from '../../../../lib/util';
+import ItemModal from '../item-modal';
 
 class PartItems extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      item: '',
+      showModal: false,
     };
+    this.handleItemModal = this.handleItemModal.bind(this);
+  }
+
+  handleItemModal(item){
+    console.log('item: ', item);
+    this.state.showModal ?
+      this.setState({item: '', showModal: false})
+      :
+      this.setState({item: item, showModal: true});
   }
 
   render() {
     console.log('item props: ', this.props);
     return (
-      <div className='part-items'>
+      <div className='part-items-container'>
+        <div className='clear-float'></div>
         <h4>PARTS ITEMS</h4>
         {this.props.items.map(item => {
-          return item.type === 'parts' ?
-            <div key={item._id}>
-              <img src={item.photoURI} height='100' width='100' />
-              <h3>{item.name}</h3>
-              <h3>{item._id}</h3>
+          return item.type === 'part' ?
+            <div className='part-item' key={item._id}>
+              <img src={item.photoURI} />
+              <h6>{item.name}</h6>
+              <button
+                onClick={() => this.handleItemModal(item)}>
+                View Item
+              </button>
             </div>
             :
             undefined;
         })}
+        {util.renderIf(this.state.showModal,
+          <ItemModal
+            item={this.state.item}
+            onComplete={this.handleItemModal}
+          />
+        )}
       </div>
     );
   }
