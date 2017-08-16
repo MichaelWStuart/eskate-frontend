@@ -12,7 +12,7 @@ class Header extends React.Component {
     this.state = {
       items: [{name: 'mtn board', type: 'board'}, {name: 'wheel', type: 'part'}],
       itemName:'',
-      itemCount: 3,
+      itemCount: '',
       itemTotal: 100.00,
       showCart: false,
     };
@@ -20,7 +20,14 @@ class Header extends React.Component {
   componentWillMount() {
     this.props.storeSettingsFetch();
   }
-
+  componentWillReceiveProps(props){
+    let sumTotal = props.cart.reduce((prev, curr) => prev += curr.price, 0)
+    console.log('!!!!!', sumTotal);
+    this.setState({
+      itemCount: props.cart.length,
+      itemTotal: sumTotal,
+    })
+  }
   handleCartModal(){
     this.setState({showCart: true});
   }
@@ -70,6 +77,7 @@ class Header extends React.Component {
 
 let mapStateToProps = (state) => ({
   header: state.store,
+  cart: state.cart,
 })
 
 let mapDispatchToProps = (dispatch) => ({
