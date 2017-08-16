@@ -19,9 +19,9 @@ class ItemModal extends React.Component {
               <button className='close' onClick={this.props.onComplete}>X</button>
               <h4>{item.name}</h4>
               <h4>${item.price}</h4>
+              <button className='add-to-cart'>Add to Cart</button>
             </div>
           </div>
-          <button>Add to Cart</button>
           <div className='lower-section'>
             <p>{item.description}</p>
             {util.renderIf(item.type === 'board',
