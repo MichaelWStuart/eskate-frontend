@@ -14,7 +14,6 @@ class BoardItems extends React.Component {
     this.handleItemModal = this.handleItemModal.bind(this);
   }
 
-
   handleItemModal(item){
     console.log('item: ', item);
     this.state.showModal ?

@@ -12,7 +12,7 @@ class CartModal extends React.Component {
     this.handleCartItemDelete = this.handleCartItemDelete.bind(this);
   }
 
-  componentWillReceiveProps(props){
+  componentWillMount(props){
     let cartItems = this.props.cart.length;
     cartItems ? this.setState({cartHasItems: true}) : undefined;
   }
@@ -22,22 +22,21 @@ class CartModal extends React.Component {
   }
 
   render(){
-    let total = this.state.cartHasItems ? this.props.cart.reduce((acc, cur) => {
-      return acc += cur.price, 0;
-    }) : 'empty';
-    
+    let total = this.state.cartHasItems ? this.props.cart.reduce((acc, cur) => {return acc + cur.price;}, 0) : 'Empty';
+
     console.log('total: ', total);
+
     return(
       <div className='cart-modal-background' onClick={this.props.onComplete}>
         <div className='cart-modal-content'>
           {util.renderIf(this.state.cartHasItems,
             <div>
-              {this.props.cart.map(item => {
-                return <div className='cart-modal-items' key={item._id}>
+              {this.props.cart.map((item,i) => {
+                return <div className='cart-modal-items' key={i}>
                   <img src={item.photoURI} />
                   <h6>{item.name}</h6>
                   <h6>${item.price}</h6>
-                  <button className='close' onClick={this.handleCartItemDelete}>X</button>
+                  <button className='close'               onClick={this.handleCartItemDelete}>X</button>
                 </div>;
               })}
             </div>

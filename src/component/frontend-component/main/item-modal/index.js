@@ -2,10 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as util from '../../../../lib/util';
 import './_item-modal.scss';
+import * as cart from '../../../../action/cart-actions.js';
 
 class ItemModal extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  handleAddToCart(item){
+    this.props.addToCart(item);
   }
 
   render() {
@@ -19,7 +24,10 @@ class ItemModal extends React.Component {
               <button className='close' onClick={this.props.onComplete}>X</button>
               <h4>{item.name}</h4>
               <h4>${item.price}</h4>
-              <button className='add-to-cart'>Add to Cart</button>
+              <button className='add-to-cart'
+                onClick={()=> this.handleAddToCart(item)}>
+                Add to Cart
+              </button>
             </div>
           </div>
           <div className='modal-body'>
@@ -52,6 +60,7 @@ class ItemModal extends React.Component {
 let mapStateToProps = (state) => ({});
 
 let mapDispatchToProps = (dispatch) => ({
+  addToCart: (item) => dispatch(cart.addToCart(item)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemModal);

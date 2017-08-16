@@ -15,7 +15,7 @@ class Header extends React.Component {
       itemTotal: 100.00,
       showCart: false,
     };
-    // this.handleCartModal = this.handleCartModal.bind(this);
+    this.handleCartModal = this.handleCartModal.bind(this);
   }
 
   componentWillMount() {
@@ -31,12 +31,12 @@ class Header extends React.Component {
     });
   }
 
-  // handleCartModal(){
-  //   this.state.showCart ?
-  //     this.setState({showCart: false})
-  //     :
-  //     this.setState({showCart: true});
-  // }
+  handleCartModal(){
+    this.state.showCart ?
+      this.setState({showCart: false})
+      :
+      this.setState({showCart: true});
+  }
 
   render() {
     let {itemName, itemCount, itemTotal} = this.state;
@@ -47,7 +47,8 @@ class Header extends React.Component {
           src={this.props.header.storeLogoURI}
         />
         <div className='cart-button'>
-          <button type='button'>
+          <button type='button'
+            onClick={this.handleCartModal}>
             <i className="fa fa-shopping-cart"></i> <span id="cart-total">
               {itemCount} item(s) - $ {itemTotal}</span></button>
         </div>
