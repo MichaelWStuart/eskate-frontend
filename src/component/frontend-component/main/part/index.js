@@ -23,10 +23,9 @@ class PartItems extends React.Component {
   }
 
   render() {
-    console.log('@@@@@ ', this.props);
     return (
       <div className='part-items-container'>
-        <div className='clear-float'></div>
+
         <h4>PARTS ITEMS</h4>
         {this.props.items.map(item => {
           return item.type === 'part' ?
@@ -47,6 +46,7 @@ class PartItems extends React.Component {
             onComplete={this.handleItemModal}
           />
         )}
+        <div className='clear-float'></div>
       </div>
     );
   }

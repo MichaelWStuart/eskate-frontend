@@ -4,6 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import appStoreCreate from '../../lib/app-store-create';
 import AdminDashboard from '../admin-component/admin-dashboard';
 import Storeview from '../frontend-component';
+import '../../style/_main.scss';
 
 const store = appStoreCreate();
 
@@ -11,10 +12,10 @@ const App = () => (
   <div className="app">
     <Provider store={store}>
       <BrowserRouter>
-        <main>
+        <div>
           <Route exact path="/admin" component={AdminDashboard} />
           <Route exact path="/" component={Storeview} />
-        </main>
+        </div>
       </BrowserRouter>
     </Provider>
   </div>

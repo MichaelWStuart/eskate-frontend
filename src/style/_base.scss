@@ -64,3 +64,25 @@ ul li { list-style: disc; }
 ol li { list-style: decimal; }
 ol ol li , ul ol li { list-style: lower-alpha; }
 ol ul li , ul ul li { list-style: square; }
+
+//wireframe
+
+// .app {
+//   height: 100%;
+//   border: 3px solid yellow;
+// }
+
+.frontend-header {
+  height: 10%;
+  border: 5px solid red;
+}
+
+.frontend-main {
+  height: 80%;
+  border: 5px solid blue;
+}
+
+.frontend-footer {
+  height: 10%;
+  border: 5px solid orange;
+}

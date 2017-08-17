@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import './_cart.scss';
 import * as util from '../../../../lib/util';
+import * as cartActions from '../../../../action/cart-actions';
+
 
 class CartModal extends React.Component {
   constructor(props){
@@ -18,7 +20,7 @@ class CartModal extends React.Component {
   }
 
   handleCartItemDelete(item){
-
+    this.props.cartItemRemove(item);
   }
 
   render(){
@@ -36,7 +38,10 @@ class CartModal extends React.Component {
                   <img src={item.photoURI} />
                   <h6>{item.name}</h6>
                   <h6>${item.price}</h6>
-                  <button className='close'               onClick={this.handleCartItemDelete}>X</button>
+                  <button className='close'
+                    onClick={() => this.handleCartItemDelete(item)}>
+                  X
+                  </button>
                 </div>;
               })}
             </div>
@@ -62,6 +67,8 @@ let mapStateToProps = (state) => ({
   cart: state.cart,
 });
 
-let mapDispatchToProps = (dispatch) => ({});
+let mapDispatchToProps = (dispatch) => ({
+  cartItemRemove: (item) => dispatch(cartActions.cartItemRemove(item)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartModal);

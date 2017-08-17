@@ -17,7 +17,7 @@ class MainView extends React.Component {
     return (
       <div>
         <Header />
-        <main>
+        <main className='frontend-main'>
           <Hero />
           <BoardItems />
           <PartItems />
