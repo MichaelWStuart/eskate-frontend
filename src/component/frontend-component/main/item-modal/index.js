@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as util from '../../../../lib/util';
 import './_item-modal.scss';
 import * as cart from '../../../../action/cart-actions.js';
+import uuid from 'uuid/v1';
 
 class ItemModal extends React.Component {
   constructor(props) {
@@ -10,7 +11,11 @@ class ItemModal extends React.Component {
   }
 
   handleAddToCart(item){
-    this.props.addToCart(item);
+    // item.cartNum = Math.floor(Math.random() * (100000 - 1)) + 1;
+    let cartItem = Object.create(item);
+    cartItem.cartNum = uuid();
+
+    this.props.addToCart(cartItem);
   }
 
   render() {
