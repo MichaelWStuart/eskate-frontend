@@ -6,7 +6,7 @@ import OrderList from '../order-list';
 import ItemList from '../item-list';
 import * as userActions from '../../../action/user-actions';
 import * as itemActions from '../../../action/item-actions';
-import { cookieFetch } from '../../../lib/util';
+import * as util from '../../../lib/util.js';
 
 class AdminDashboard extends React.Component {
   constructor(props) {
@@ -16,8 +16,9 @@ class AdminDashboard extends React.Component {
   }
 
   componentWillMount() {
+    console.log('^^^^^^', util.cookieFetch);
     this.props.fetchItems();
-    const token = cookieFetch('Admin-Token');
+    const token = util.cookieFetch('Admin-Token');
     token && this.props.restoreLogin(token);
   }
 
