@@ -27,11 +27,17 @@ export const itemsFetchRequest = () => dispatch =>
 
 export const itemCreateRequest = item => (dispatch, getState) => {
   const { user } = getState();
+  const photo = item.photoURI;
+  delete item.photoURI;
 //eslint-disable-next-line
   superagent.post(`${__API_URL__}/item`)
     .set('Authorization', `Bearer ${user}`)
-    .send(item)
-    .then(response => dispatch(itemCreate(response)));
+    .field('item', JSON.stringify(item))
+    .attach('file', photo)
+    .then(response => {
+      console.log(JSON.parse(response.text))
+      return dispatch(itemCreate(JSON.parse(response.text)))
+    });
 };
 
 export const itemUpdateRequest = item => (dispatch, getState) => {
