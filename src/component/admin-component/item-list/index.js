@@ -15,6 +15,7 @@ class ItemList extends React.Component {
   }
 
   render() {
+    console.log(this.props.items)
     return (
       <div>
         <h2>Item List</h2>
