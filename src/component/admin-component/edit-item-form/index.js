@@ -9,6 +9,10 @@ class EditItemForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentWillMount() {
+    console.log(this.props)
+  }
+
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }

@@ -51,6 +51,7 @@ class CreateItemForm extends React.Component {
       burstCurrent: '',
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSave = this.handleSave.bind(this);
   }
 
   handleChange(e) {
@@ -59,6 +60,12 @@ class CreateItemForm extends React.Component {
     } else {
       this.setState({ [e.target.name]: e.target.value });
     }
+  }
+
+  handleSave() {
+    this.props.createItem(this.state);
+    console.log('saving');
+    this.props.toggleView();
   }
 
   render() {
@@ -111,7 +118,7 @@ class CreateItemForm extends React.Component {
           <label htmlFor="burstCurrent">Burst Current<input onChange={this.handleChange} name="burstCurrent" value={this.state.burstCurrent} /></label>
         </form>
         <div>
-          <button onClick={() => this.props.createItem(this.state)}>Save</button>
+          <button onClick={this.handleSave}>Save</button>
           <button onClick={this.props.toggleView}>Cancel</button>
         </div>
       </div>
@@ -120,10 +127,7 @@ class CreateItemForm extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  createItem: item => {
-    console.log('asdasdsad')
-    return dispatch(itemActions.itemCreateRequest(item))
-  }
+  createItem: item => dispatch(itemActions.itemCreateRequest(item)),
 });
 
 export default connect(null, mapDispatchToProps)(CreateItemForm);

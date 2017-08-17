@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import AdminNav from '../admin-nav';
+import './_admin_head.scss';
 
 const AdminHead = props => (
   <div className="admin-head">
