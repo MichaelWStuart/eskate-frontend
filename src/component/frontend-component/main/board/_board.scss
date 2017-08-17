@@ -1,9 +1,24 @@
-.board-items-container {
+@import "../../../../style/_main.scss";
+
+.clear-float {
+  clear: both;
+}
+
+.board-items-container * {
   width: 100%;
   height: 40%;
 }
 
 .board-item {
-  width: 30%;
-  height: auto;
+  width: calc(90%/4);
+  height: 100%;
+  float: left;
+  margin-left: calc(10%/8);
+  margin-right: calc(10%/8);
+  border: 1px solid black;
+
+  img {
+    width: 100%;
+    height: 10%;
+  }
 }
