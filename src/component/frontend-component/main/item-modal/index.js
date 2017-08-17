@@ -11,10 +11,9 @@ class ItemModal extends React.Component {
   }
 
   handleAddToCart(item){
-    // item.cartNum = Math.floor(Math.random() * (100000 - 1)) + 1;
+    //creating prototype to pass by value to manage cart item delete
     let cartItem = Object.create(item);
     cartItem.cartNum = uuid();
-
     this.props.addToCart(cartItem);
   }
 

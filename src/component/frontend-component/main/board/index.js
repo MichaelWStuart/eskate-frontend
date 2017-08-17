@@ -23,8 +23,6 @@ class BoardItems extends React.Component {
   }
 
   render() {
-    console.log('board props: ', this.props);
-    console.log('!!!!!: ', this.state);
     return (
       <div className='board-items-container'>
         <h4>BOARD ITEMS</h4>
@@ -47,6 +45,7 @@ class BoardItems extends React.Component {
             onComplete={this.handleItemModal}
           />
         )}
+        <div className='clear-float'></div>
       </div>
     );
   }

@@ -16,9 +16,9 @@ class Footer extends React.Component {
     });
     let googleLoginURL = `${googleMapBaseURL}${googleLoginQuery}`;
     return (
-      <div className='footer-main'>
+      <div className='frontend-footer'>
         <div className='footer-container'>
-          <div className='footer-column'>
+          <div className='footer-column-social'>
             <h3>Follow us</h3>
             <ul className='footer-social'>
               <li className='footer-social-icon'><a href='#' title="Like us on Facebook"><i className="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
@@ -33,10 +33,7 @@ class Footer extends React.Component {
               </li>
             </ul>
           </div>
-          <div className='footer-column'>
-            .
-          </div>
-          <div className='footer-column'>
+          <div className='footer-column-contact'>
             <h3>Where we are located?</h3>
             <div className='google-maps'>
               <iframe
@@ -51,17 +48,17 @@ class Footer extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
 
 let mapStateToProps = (state) => ({
   header: state.store,
-})
+});
 
 let mapDispatchToProps = (dispatch) => ({
   storeSettingsFetch: () => dispatch(storeActions.storeSettingsFetchRequest()),
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Footer);
