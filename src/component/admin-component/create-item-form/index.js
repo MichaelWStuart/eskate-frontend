@@ -54,7 +54,11 @@ class CreateItemForm extends React.Component {
   }
 
   handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+    if (e.target.type === 'file') {
+      this.setState({ [e.target.name]: e.target.files[0] });
+    } else {
+      this.setState({ [e.target.name]: e.target.value });
+    }
   }
 
   render() {
@@ -64,7 +68,7 @@ class CreateItemForm extends React.Component {
         <form>
           <label htmlFor="type">Item Type<input onChange={this.handleChange} name="type" value={this.state.type} /></label>
           <label htmlFor="name">Name<input onChange={this.handleChange} name="name" value={this.state.name} /></label>
-          <label htmlFor="photoURI">Photo URL<input onChange={this.handleChange} name="photoURI" value={this.state.photoURI} /></label>
+          <label htmlFor="photoURI">Photo URL<input type="file" onChange={this.handleChange} name="photoURI" value={this.state.photoURI.filename} /></label>
           <label htmlFor="description">Description<input onChange={this.handleChange} name="description" value={this.state.description} /></label>
           <label htmlFor="price">Price<input onChange={this.handleChange} name="price" value={this.state.price} /></label>
           <label htmlFor="motorPower">Motor Power<input onChange={this.handleChange} name="motorPower" value={this.state.motorPower} /></label>
