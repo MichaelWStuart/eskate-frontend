@@ -26,7 +26,6 @@ class CartModal extends React.Component {
   render(){
     let total = this.state.cartHasItems ? this.props.cart.reduce((acc, cur) => {return acc + cur.price;}, 0) : 'Empty';
 
-    console.log('total: ', total);
 
     return(
       <div className='cart-modal-background' onClick={this.props.onComplete}>

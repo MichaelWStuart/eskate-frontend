@@ -48,7 +48,6 @@ export const itemUpdateRequest = item => (dispatch, getState) => {
 
 export const itemDeleteRequest = item => (dispatch, getState) => {
   const { user } = getState();
-  console.log('USER', user)
 //eslint-disable-next-line
   return superagent.delete(`${__API_URL__}/item/${item._id}`)
     .set('Authorization', `Bearer ${user}`)

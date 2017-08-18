@@ -18,7 +18,6 @@ class PartItems extends React.Component {
   }
 
   handleItemModal(item){
-    console.log('item: ', item);
     this.state.showModal ?
       this.setState({item: '', showModal: false})
       :
@@ -28,7 +27,7 @@ class PartItems extends React.Component {
   render() {
     let dollar = '$';
     return (
-      <div className='part-items-container'>
+      <div className='part-items-container' id='parts'>
         <AppBar className='app-bar'
           title="E - PARTS"
         />

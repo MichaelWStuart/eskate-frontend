@@ -21,7 +21,6 @@ class BoardItems extends React.Component {
   }
 
   handleItemModal(item){
-    console.log('item: ', item);
     this.state.showModal ?
       this.setState({item: '', showModal: false})
       :
@@ -32,7 +31,7 @@ class BoardItems extends React.Component {
   render() {
     let dollar = '$';
     return (
-      <div className='board-items-container'>
+      <div className='board-items-container' id='boards'>
         <AppBar className='app-bar'
           title="E - BOARDS"
         />
