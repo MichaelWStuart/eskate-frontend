@@ -10,7 +10,7 @@ const production = process.env.NODE_ENV === 'production';
 
 let plugins = [
   new EnvironmentPlugin(['NODE_ENV']),
-  new ExtractPlugin('bundle.[hash].css'),
+  new ExtractPlugin('bundle-[hash].css'),
   new HTMLPlugin({ template: `${__dirname}/src/index.html` }),
   new DefinePlugin({
     __DEBUG__: JSON.stringify(!production),
@@ -29,7 +29,7 @@ module.exports = {
   plugins,
   entry: `${__dirname}/src/main.js`,
   output: {
-    filename: 'bundle.[hash].js',
+    filename: 'bundle-[hash].js',
     path: `${__dirname}/build`,
     publicPath: process.env.CDN_URL,
   },
