@@ -26,7 +26,7 @@ class ItemModal extends React.Component {
           <div className='modal-header'>
             <img src={item.photoURI} />
             <div className='modal-header-right'>
-              <button className='close' onClick={this.props.onComplete}>X</button>
+              <button className='item-modal-close' onClick={this.props.onComplete}>X</button>
               <h4>{item.name}</h4>
               <h4>${item.price}</h4>
               <button className='add-to-cart'
