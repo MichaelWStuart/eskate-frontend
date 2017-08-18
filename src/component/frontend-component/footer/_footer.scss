@@ -5,8 +5,10 @@
 }
 
 .frontend-footer {
-  width: 100%;
+  margin-top: 15px;
   height: 10%;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 8px 1px #ccc;
 }
 .footer-container {
   width: 80%;
@@ -15,6 +17,7 @@
   margin-right: auto;
 }
 .footer-column-social {
+  margin-top: 15px;
   position: relative;
   width: calc(100%/2);
   height: 100%;
@@ -22,6 +25,7 @@
 
 }
 .footer-column-contact {
+  margin-top: 15px;
   position: relative;
   width: calc(100%/2);
   height: 100%;
