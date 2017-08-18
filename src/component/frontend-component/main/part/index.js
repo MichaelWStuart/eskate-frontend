@@ -3,6 +3,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as util from '../../../../lib/util';
 import ItemModal from '../item-modal';
+import AppBar from 'material-ui/AppBar';
+import {Card, CardMedia, CardTitle} from 'material-ui/Card';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class PartItems extends React.Component {
   constructor(props) {
@@ -15,7 +18,6 @@ class PartItems extends React.Component {
   }
 
   handleItemModal(item){
-    console.log('item: ', item);
     this.state.showModal ?
       this.setState({item: '', showModal: false})
       :
@@ -23,20 +25,26 @@ class PartItems extends React.Component {
   }
 
   render() {
+    let dollar = '$';
     return (
-      <div className='part-items-container'>
-
-        <h4>PARTS ITEMS</h4>
+      <div className='part-items-container' id='parts'>
+        <AppBar className='app-bar'
+          title="E - PARTS"
+        />
         {this.props.items.map(item => {
           return item.type === 'part' ?
-            <div className='part-item' key={item._id}>
-              <img src={item.photoURI} />
-              <h6>{item.name}</h6>
-              <button
-                onClick={() => this.handleItemModal(item)}>
-                View Item
-              </button>
-            </div>
+            <Card className='card-item' key={item._id}>
+
+              <CardMedia className='card-header'>
+                <img className='card-image' src={item.photoURI} alt="" />
+              </CardMedia>
+              <CardTitle className='card-title-bar' title={item.name}         subtitle={dollar + item.price} style={{backgroundColor: '#e3e5e8', margin: '0px'}}/>
+              <RaisedButton className='card-view-button' label="View Item"
+                onClick={() => this.handleItemModal(item)}
+                style={{margin: '0px 0px 10px 0px'}}
+              />
+
+            </Card>
             :
             undefined;
         })}

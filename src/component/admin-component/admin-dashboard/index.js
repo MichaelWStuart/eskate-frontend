@@ -7,6 +7,7 @@ import StoreSettings from '../store-settings';
 import ItemList from '../item-list';
 import * as userActions from '../../../action/user-actions';
 import * as itemActions from '../../../action/item-actions';
+import * as storeActions from '../../../action/store-actions';
 import * as util from '../../../lib/util.js';
 
 class AdminDashboard extends React.Component {
@@ -28,7 +29,6 @@ class AdminDashboard extends React.Component {
   }
 
   render() {
-    console.log('####', this.state.view);
     return (
       <div className="dashboard">
         <AdminHead
