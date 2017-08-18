@@ -13,9 +13,9 @@ export const storeSettingsFetchRequest = () => (dispatch) => {
     .then((res) => {
       console.log('****', res.body);
       dispatch(storeSet(res.body[0]));
-    return res;
-  });
-}
+      return res;
+    });
+};
 
 export const storeSettingsUpdateRequest = (settings) => (dispatch, getState) => {
   let {user} = getState();
