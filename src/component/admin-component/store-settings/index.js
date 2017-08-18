@@ -2,6 +2,7 @@ import React from 'react';
 import * as util from '../../../lib/util.js';
 import { connect } from 'react-redux';
 import * as storeActions from '../../../action/store-actions';
+import './_store-settings.scss';
 
 
 class StoreSettings extends React.Component {
@@ -65,7 +66,7 @@ class StoreSettings extends React.Component {
         <div className='photo-upload-form'>
           <div className='profile-preview'>
             {this.state.storeLogoURI != ''?
-              <img src={this.state.storeLogoURI} />
+              <img className='admin-logo' src={this.state.storeLogoURI} />
               : null }
           </div>
           <div className='form-container'>

@@ -1,6 +1,5 @@
 import React from 'react';
 import {BrowserRouter, Route, Link, Redirect} from 'react-router-dom';
-import Store from '../store-settings'
 
 const AdminNav = props => (
   <div className='navigation'>
