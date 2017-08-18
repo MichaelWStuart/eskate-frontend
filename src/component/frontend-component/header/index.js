@@ -24,7 +24,6 @@ class Header extends React.Component {
 
   componentWillReceiveProps(props){
     let sumTotal = props.cart.reduce((prev, curr) => prev += curr.price, 0);
-    console.log('props.cart: ', props.cart);
     this.setState({
       itemCount: props.cart.length,
       itemTotal: sumTotal,
@@ -60,12 +59,14 @@ class Header extends React.Component {
         <div className='navigation'>
           <ul className='navigation-menu'>
             <li>
-              <a href='#'>
-              Boards
+              <a href='#boards'>
+                Boards
               </a>
             </li>
             <li>
-              Parts
+              <a href='#parts'>
+                Parts
+              </a>
             </li>
             <li>
               <a href='#'>

@@ -65,7 +65,6 @@ class CreateItemForm extends React.Component {
 
   handleSave() {
     this.props.createItem(this.state);
-    console.log('saving');
     this.props.toggleView();
   }
 

@@ -4,10 +4,9 @@
 export default (state = {}, action) => {
   let {type, payload} = action;
   switch (type) {
-    case 'STORE_SET':
-    console.log('(((())))', payload);
-      return payload;
-    default:
-      return state;
+  case 'STORE_SET':
+    return payload;
+  default:
+    return state;
   }
 };

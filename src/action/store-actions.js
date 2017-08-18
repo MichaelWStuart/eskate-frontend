@@ -11,15 +11,13 @@ export const storeSet = (storesettings) => ({
 export const storeSettingsFetchRequest = () => (dispatch) => {
   return superagent.get(`${__API_URL__}/store`)
     .then((res) => {
-      console.log('****', res.body);
       dispatch(storeSet(res.body[0]));
-    return res;
-  });
-}
+      return res;
+    });
+};
 
 export const storeSettingsUpdateRequest = (settings) => (dispatch, getState) => {
   let {user} = getState();
-  console.log('%%Here',user );
   return superagent.put(`${__API_URL__}/store/${settings._id}`)
     .field('phoneNumber', settings.storePhoneNumber)
     .field('address', settings.storeAddress)
@@ -30,6 +28,5 @@ export const storeSettingsUpdateRequest = (settings) => (dispatch, getState) => 
     .attach('file', settings.storeLogoURI)
     .set('Authorization', `Bearer ${user}`)
     .then(res => {
-      console.log('responce', res.body);
     });
 };
