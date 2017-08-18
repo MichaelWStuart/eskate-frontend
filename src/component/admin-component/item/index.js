@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as itemActions from '../../../action/item-actions';
 import EditItem from '../edit-item-form';
+import './_item.scss';
 
 class Item extends React.Component {
   constructor(props) {
@@ -21,17 +22,21 @@ class Item extends React.Component {
 
   render() {
     return (
-      <li>
-        <div>
-          <img src={this.props.item.photoURI} alt={this.props.item.description} />
-        </div>
-        <div>
-          <h3>{this.props.item.name}</h3>
-          <h4>{this.props.item.price}</h4>
-        </div>
-        <div>
-          <button onClick={this.handleEditClick}>Edit</button>
-          <button onClick={() => this.props.deleteItem(this.props.item)}>Delete</button>
+      <li className="item-plus-form">
+        <div className="item">
+          <div className="image-container">
+            <img src={this.props.item.photoURI} alt={this.props.item.description} />
+          </div>
+          <div className="info-container">
+            <div className="image-info">
+              <h2>{this.props.item.name}</h2>
+              <h4>{`$${this.props.item.price}`}</h4>
+            </div>
+            <div className="button-container">
+              <button onClick={this.handleEditClick}>Edit</button>
+              <button onClick={() => this.props.deleteItem(this.props.item)}>Delete</button>
+            </div>
+          </div>
         </div>
         {this.state.expanded &&
           <EditItem

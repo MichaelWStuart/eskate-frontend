@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import LoginForm from '../login-form';
 import AdminHead from '../admin-head';
 import OrderList from '../order-list';
+import StoreSettings from '../store-settings';
 import ItemList from '../item-list';
 import * as storeActions from '../../../action/store-actions';
 import * as userActions from '../../../action/user-actions';
 import * as itemActions from '../../../action/item-actions';
-import { cookieFetch } from '../../../lib/util';
+import * as util from '../../../lib/util.js';
 
 class AdminDashboard extends React.Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class AdminDashboard extends React.Component {
   componentWillMount() {
     this.props.storeSettingsFetch();
     this.props.fetchItems();
-    const token = cookieFetch('Admin-Token');
+    const token = util.cookieFetch('Admin-Token');
     token && this.props.restoreLogin(token);
   }
 
@@ -28,6 +29,7 @@ class AdminDashboard extends React.Component {
   }
 
   render() {
+    console.log('####', this.state.view);
     return (
       <div className="dashboard">
         <AdminHead
@@ -35,8 +37,8 @@ class AdminDashboard extends React.Component {
           userLogout={this.props.userLogout}
         />
         {this.props.user ? (
-          this.state.view === 'orders' ? (
-            <OrderList className="main" />
+          this.state.view === 'storeSettings' ? (
+            <StoreSettings />
           ) : (
             <ItemList className="main" />
           )
@@ -52,6 +54,7 @@ class AdminDashboard extends React.Component {
 }
 
 const mapStateToProps = state => ({ user: state.user });
+
 const mapDispatchToProps = dispatch => ({
   storeSettingsFetch: () => dispatch(storeActions.storeSettingsFetchRequest()),
   restoreLogin: user => dispatch(userActions.userLogin(user)),
@@ -62,5 +65,5 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(AdminDashboard);
