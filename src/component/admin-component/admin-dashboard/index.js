@@ -5,6 +5,7 @@ import AdminHead from '../admin-head';
 import OrderList from '../order-list';
 import StoreSettings from '../store-settings';
 import ItemList from '../item-list';
+import * as storeActions from '../../../action/store-actions';
 import * as userActions from '../../../action/user-actions';
 import * as itemActions from '../../../action/item-actions';
 import * as storeActions from '../../../action/store-actions';
@@ -40,10 +41,11 @@ class AdminDashboard extends React.Component {
           this.state.view === 'storeSettings' ? (
             <StoreSettings />
           ) : (
-            <ItemList />
+            <ItemList className="main" />
           )
         ) : (
           <LoginForm
+            className="main"
             onComplete={this.props.userLogin}
           />
         )}
@@ -54,6 +56,7 @@ class AdminDashboard extends React.Component {
 
 const mapStateToProps = state => ({ user: state.user });
 const mapDispatchToProps = dispatch => ({
+  storeSettingsFetch: () => dispatch(storeActions.storeSettingsFetchRequest()),
   restoreLogin: user => dispatch(userActions.userLogin(user)),
   userLogin: user => dispatch(userActions.userLoginRequest(user)),
   userLogout: () => dispatch(userActions.userLogoutRequest()),

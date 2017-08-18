@@ -34,10 +34,7 @@ export const itemCreateRequest = item => (dispatch, getState) => {
     .set('Authorization', `Bearer ${user}`)
     .field('item', JSON.stringify(item))
     .attach('file', photo)
-    .then(response => {
-      console.log(JSON.parse(response.text))
-      return dispatch(itemCreate(JSON.parse(response.text)))
-    });
+    .then(response => dispatch(itemCreate(JSON.parse(response.text))));
 };
 
 export const itemUpdateRequest = item => (dispatch, getState) => {
@@ -46,13 +43,14 @@ export const itemUpdateRequest = item => (dispatch, getState) => {
   superagent.put(`${__API_URL__}/item/${item._id}`)
     .set('Authorization', `Bearer ${user}`)
     .send(item)
-    .then(response => dispatch(itemUpdate(response)));
+    .then(() => dispatch(itemUpdate(item)));
 };
 
 export const itemDeleteRequest = item => (dispatch, getState) => {
   const { user } = getState();
+  console.log('USER', user)
 //eslint-disable-next-line
-  superagent.delete(`${__API_URL__}/item/${item._id}`)
+  return superagent.delete(`${__API_URL__}/item/${item._id}`)
     .set('Authorization', `Bearer ${user}`)
-    .then(response => dispatch(itemDestroy(response)));
+    .then(() => dispatch(itemDestroy(item)));
 };

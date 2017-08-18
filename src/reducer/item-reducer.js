@@ -5,7 +5,7 @@ export default (state = [], action) => {
     case 'ITEM_SET':
       return payload;
     case 'ITEM_CREATE':
-      return [...state].push(payload);
+      return [...state, payload];
     case 'ITEM_UPDATE':
       return state.map(item => item._id === payload._id ? payload : item);
     case 'ITEM_DESTROY':

@@ -1,5 +1,6 @@
 import superagent from 'superagent';
-import { cookieFetch, cookieDelete } from '../lib/util.js';
+
+import { cookieDelete } from '../lib/util';
 
 export const userLogin = user => ({
   type: 'USER_LOGIN',
@@ -17,8 +18,7 @@ export const userLoginRequest = user => dispatch =>
     .withCredentials()
     .auth(user.username, user.password)
     .then((res) => {
-      console.log('&&&&&&&',res );
-      const token = res.text
+      const token = res.text;
       if (token) dispatch(userLogin(token));
       return res;
     });
