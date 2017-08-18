@@ -1,6 +1,7 @@
 import React from 'react';
 import './_hero.scss';
 
+
 class Hero extends React.Component {
   constructor(props){
     super(props);

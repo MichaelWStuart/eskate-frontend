@@ -38,7 +38,7 @@ class CartModal extends React.Component {
                   <img src={item.photoURI} />
                   <h6>{item.name}</h6>
                   <h6>${item.price}</h6>
-                  <button className='close'
+                  <button className='item-remove-cart'
                     onClick={() => this.handleCartItemDelete(item)}>
                   X
                   </button>

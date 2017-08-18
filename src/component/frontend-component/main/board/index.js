@@ -3,6 +3,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as util from '../../../../lib/util';
 import ItemModal from '../item-modal';
+// import injectTapEventPlugin from 'react-tap-event-plugin';
+import AppBar from 'material-ui/AppBar';
+import {Card, CardMedia, CardTitle} from 'material-ui/Card';
+import RaisedButton from 'material-ui/RaisedButton';
+
+// injectTapEventPlugin();
 
 class BoardItems extends React.Component {
   constructor(props) {
@@ -22,20 +28,28 @@ class BoardItems extends React.Component {
       this.setState({item: item, showModal: true});
   }
 
+
   render() {
+    let dollar = '$';
     return (
       <div className='board-items-container'>
-        <h4>BOARD ITEMS</h4>
+        <AppBar className='app-bar'
+          title="E - BOARDS"
+        />
         {this.props.items.map(item => {
           return item.type === 'board' ?
-            <div className='board-item' key={item._id}>
-              <img src={item.photoURI} />
-              <h6>{item.name}</h6>
-              <button
-                onClick={() => this.handleItemModal(item)}>
-                View Item
-              </button>
-            </div>
+            <Card className='card-item' key={item._id}>
+
+              <CardMedia className='card-header'>
+                <img className='card-image' src={item.photoURI} alt="" />
+              </CardMedia>
+              <CardTitle className='card-title-bar' title={item.name} subtitle={dollar + item.price} style={{backgroundColor: '#e3e5e8', margin: '0px'}}/>
+              <RaisedButton className='card-view-button' label="View Item"
+                onClick={() => this.handleItemModal(item)}
+                style={{margin: '0px 0px 10px 0px'}}
+              />
+
+            </Card>
             :
             undefined;
         })}
