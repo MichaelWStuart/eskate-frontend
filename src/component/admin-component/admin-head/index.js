@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import AdminNav from '../admin-nav';
 import './_admin-header.scss';
+
 const AdminHead = props => (
-  <div className='frontend-header'>
+  <div>
     <img className='store-logo' src={props.header.storeLogoURI} alt="logo" />
     {props.user &&
       <AdminNav

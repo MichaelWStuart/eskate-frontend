@@ -8,7 +8,6 @@ import ItemList from '../item-list';
 import * as storeActions from '../../../action/store-actions';
 import * as userActions from '../../../action/user-actions';
 import * as itemActions from '../../../action/item-actions';
-import * as storeActions from '../../../action/store-actions';
 import * as util from '../../../lib/util.js';
 
 class AdminDashboard extends React.Component {
@@ -55,16 +54,16 @@ class AdminDashboard extends React.Component {
 }
 
 const mapStateToProps = state => ({ user: state.user });
+
 const mapDispatchToProps = dispatch => ({
   storeSettingsFetch: () => dispatch(storeActions.storeSettingsFetchRequest()),
   restoreLogin: user => dispatch(userActions.userLogin(user)),
   userLogin: user => dispatch(userActions.userLoginRequest(user)),
   userLogout: () => dispatch(userActions.userLogoutRequest()),
   fetchItems: () => dispatch(itemActions.itemsFetchRequest()),
-  storeSettingsFetch: () => dispatch(storeActions.storeSettingsFetchRequest()),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(AdminDashboard);

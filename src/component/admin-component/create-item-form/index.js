@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as itemActions from '../../../action/item-actions';
+import './_create_item_form.scss';
 
 class CreateItemForm extends React.Component {
   constructor(props) {
@@ -70,7 +71,7 @@ class CreateItemForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="create-item-form">
         <h1>Create Form</h1>
         <form>
           <label htmlFor="type">Item Type<input onChange={this.handleChange} name="type" value={this.state.type} /></label>
@@ -117,7 +118,7 @@ class CreateItemForm extends React.Component {
           <label htmlFor="continuousCurrent">Continuous Current<input onChange={this.handleChange} name="continuousCurrent" value={this.state.continuousCurrent} /></label>
           <label htmlFor="burstCurrent">Burst Current<input onChange={this.handleChange} name="burstCurrent" value={this.state.burstCurrent} /></label>
         </form>
-        <div>
+        <div className="button-container">
           <button onClick={this.handleSave}>Save</button>
           <button onClick={this.props.toggleView}>Cancel</button>
         </div>
