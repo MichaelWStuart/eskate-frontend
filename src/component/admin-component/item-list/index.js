@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Item from '../item';
 import CreateItemForm from '../create-item-form';
+import './_item-list.scss';
 
 class ItemList extends React.Component {
   constructor(props) {
@@ -16,9 +17,8 @@ class ItemList extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>Item List</h2>
-        <button onClick={this.toggleView}>Add New Item</button>
+      <div className="item-list">
+        <button className="item-add-button" onClick={this.toggleView}>Add New Item</button>
         {this.state.view === 'list' ? (
           <ul>
             {this.props.items.map(item => (
