@@ -16,3 +16,20 @@ export const storeSettingsFetchRequest = () => (dispatch) => {
     return res;
   });
 }
+
+export const storeSettingsUpdateRequest = (settings) => (dispatch, getState) => {
+  let {user} = getState();
+  console.log('%%Here',user );
+  return superagent.put(`${__API_URL__}/store/${settings._id}`)
+    .field('phoneNumber', settings.storePhoneNumber)
+    .field('address', settings.storeAddress)
+    .field('city', settings.storeCity)
+    .field('state', settings.storeState)
+    .field('zipCode', settings.storeZipCode)
+    .field('aboutUs', settings.storeAboutUs)
+    .attach('file', settings.storeLogoURI)
+    .set('Authorization', `Bearer ${user}`)
+    .then(res => {
+      console.log('responce', res.body);
+    });
+};

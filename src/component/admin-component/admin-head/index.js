@@ -1,14 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import AdminNav from '../admin-nav';
-import './_admin_head.scss';
-
+import './_admin-header.scss';
 const AdminHead = props => (
-  <div className="admin-head">
-    <img className="store-logo" src={props.header.storeLogoURI} alt="store logo" />
-    <div className="admin-title">
-      <h1>Admin Page</h1>
-    </div>
+  <div className='frontend-header'>
+    <img className='store-logo' src={props.header.storeLogoURI} alt="logo" />
     {props.user &&
       <AdminNav
         changeView={props.changeView}
