@@ -3,10 +3,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as util from '../../../../lib/util';
 import ItemModal from '../item-modal';
+// import injectTapEventPlugin from 'react-tap-event-plugin';
 import AppBar from 'material-ui/AppBar';
 import {Card, CardMedia, CardTitle} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 
+// injectTapEventPlugin();
 
 class BoardItems extends React.Component {
   constructor(props) {
@@ -43,7 +45,9 @@ class BoardItems extends React.Component {
               </CardMedia>
               <CardTitle className='card-title-bar' title={item.name} subtitle={dollar + item.price} style={{backgroundColor: '#e3e5e8', margin: '0px'}}/>
               <RaisedButton className='card-view-button' label="View Item"
-                style={{margin: '0px 0px 10px 0px'}}/>
+                onClick={() => this.handleItemModal(item)}
+                style={{margin: '0px 0px 10px 0px'}}
+              />
 
             </Card>
             :

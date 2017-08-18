@@ -10,6 +10,7 @@
 
 }
 .app-bar {
+  z-index: 0!important;
   margin-top: $pad*4 !important;
   margin-bottom: $pad !important;
 }
