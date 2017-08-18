@@ -29,7 +29,7 @@ module.exports = {
   plugins,
   entry: `${__dirname}/src/main.js`,
   output: {
-    filename: 'bundle.[hash].js',
+    filename: 'bundle-[hash].js',
     path: `${__dirname}/build`,
     publicPath: process.env.CDN_URL,
   },
