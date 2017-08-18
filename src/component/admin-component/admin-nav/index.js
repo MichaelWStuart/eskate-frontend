@@ -1,11 +1,16 @@
 import React from 'react';
+import {BrowserRouter, Route, Link, Redirect} from 'react-router-dom';
+import Store from '../store-settings'
 
 const AdminNav = props => (
-  <div>
-    <button onClick={() => props.changeView('orders')}>Orders</button>
-    <button onClick={() => props.changeView('items')}>Items</button>
-    <button onClick={props.userLogout}>Logout</button>
-  </div>
+  <div className='navigation'>
+    <ul className='navigation-menu'>
+    <li onClick={() => props.changeView('orders')}>Orders</li>
+    <li onClick={() => props.changeView('items')}>Items</li>
+    <li onClick={() => props.changeView('storeSettings')}>StoreSettings</li>
+    <li onClick={props.userLogout}>Logout</li>
+  </ul>
+</div>
 );
 
 export default AdminNav;
